@@ -1,0 +1,70 @@
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="" routerLink="./home" routerLinkActive="active">
+      <img src="{{ brand }}" alt="logo" style="max-height: 38px" (click)="setTitle( 'Теплые полы Warmehaus' )" />
+    </a>
+  </div>
+
+  <div class="burger">
+
+    <svg style="outline: none; cursor: pointer;" (click)="openBottomSheet()" xmlns="http://www.w3.org/2000/svg"
+      width="24" height="24" viewBox="0 0 24 24" class="home" aria-label="home" aria-expanded="false">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path
+        d="M17.38 10.79l-2.2-2.2c-.28-.28-.36-.67-.25-1.02.37-1.12.57-2.32.57-3.57 0-.55.45-1 1-1H20c.55 0 1 .45 1 1 0 9.39-7.61 17-17 17-.55 0-1-.45-1-1v-3.49c0-.55.45-1 1-1 1.24 0 2.45-.2 3.57-.57.35-.12.75-.03 1.02.24l2.2 2.2c2.83-1.45 5.15-3.76 6.59-6.59z" />
+    </svg>
+
+    <a (click)="toggleNavbar()" role="button" #navBurger class="navbar-burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasic">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasic" class="navbar-menu" #navMenu>
+    <a class="navbar-item" href="" (click)="setTitle( 'Теплые полы Warmehaus' ); toggleNavbar()" routerLink="./home"
+      routerLinkActive="active">
+      Главная
+    </a>
+
+    <a class="navbar-item" href="#" (click)="setTitle( 'Контакты' ); toggleNavbar()" routerLink="./home/contacts"
+      routerLinkActive="active">
+      Контакты
+    </a>
+    <a class="navbar-item" href="#" (click)="setTitle( 'Инструкции' ); toggleNavbar()" routerLink="./home/instructions"
+      routerLinkActive="active">
+      Инcтрукции
+    </a>
+
+    <div (mouseover)="toggledBoxedItemToTrue()" (mouseout)="toggledBoxedItemToFalse()"
+      [ngClass]="mouseOn ? 'navbar-item has-dropdown is-hoverable' : 'navbar-item has-dropdown'">
+      <a class="navbar-link">
+        Продукция
+      </a>
+      <div class=" navbar-dropdown is-boxed">
+        <a class=" navbar-item" href="#" routerLink="./warmehaus" routerLinkActive="active"
+          (click)=" setTitle('Теплые полы Warmehaus'); toggledBoxedItemToFalse(); toggleNavbar()">
+          Warmehaus
+        </a>
+        <a class=" navbar-item" href="#" routerLink="./nexans" routerLinkActive="active"
+          (click)="setTitle('Теплые полы Nexans'); toggledBoxedItemToFalse(); toggleNavbar()">
+          Nexans
+        </a>
+      </div>
+    </div>
+
+    <hr />
+    <div class=" navbar-end">
+      <a onclick="location.href='mailto:3523204@gmail.com';">
+        <button mat-fab color="warn" (click)="toggleNavbar()"
+          aria-label="Написать на электронную почту компании Warmehaus">
+          <mat-icon>email</mat-icon>
+        </button></a>
+      <button mat-fab color="warn" aria-label="Позвонить в компанию Warmehaus"
+        (click)="openBottomSheet(); toggleNavbar()">
+        <mat-icon>phone</mat-icon>
+      </button>
+    </div>
+  </div>
+</nav>
